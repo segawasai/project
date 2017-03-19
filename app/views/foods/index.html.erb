@@ -1,9 +1,7 @@
-
 <h1>All Foods</h1>
-
 <ul class="users">
   <% @foods.each do |food| %>
-    <li>
+    <li>   
       <%= link_to food.name, food %>
     </li>
   <% end %>

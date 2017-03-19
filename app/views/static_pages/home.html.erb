@@ -1,8 +1,6 @@
 <div class="center jumbotron">
   <h1>Welcome to the Food and Drink Store</h1>
-  <%if logged_in? %>
-  <%= link_to "Order now !", '#', class: "btn btn-lg btn-primary" %>
-  <%else%>
+  <%if !logged_in? %>
   <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
   <%end%>
 </div>
@@ -11,17 +9,39 @@
   </h1>
   <div>
   <h2>
-  <a href="foods/1"><img src="/assets/banhmy.jpg" ></a>
-  	<p>
-  	<%= link_to "ORDER", '#', class: "btn btn-lg btn-primary" %>
-  	</p>	
+  <table>
+    <tbody>
+      <tr>
+        <td>
+        <a href="foods/1"><img src="/assets/banhmy.jpg" ></a>
+        </td>
+
+        <td>
+        <a href="foods/2"><img src="/assets/Coca.jpg" ></a>
+        </td>
+
+        <td>
+        <a href="foods/3"><img src="/assets/Kem.jpg" ></a>
+        </td>      
+      </tr>
+      <%if logged_in? %>
+      <tr>
+        <td>
+          <%= link_to "ORDER", '#', class: "btn btn-lg btn-primary" %>
+        </td>
+        <td>
+          <%= link_to "ORDER", '#', class: "btn btn-lg btn-primary" %>
+        </td>
+        <td>
+          <%= link_to "ORDER", '#', class: "btn btn-lg btn-primary" %>
+        </td>
+      </tr>
+      <%end%>
+    </tbody>
+  </table>
   </h2>
 
-  <h2>
-  	<a href="foods/2"><img src="/assets/Coca.jpg" ></a>
-   	<p>
-  	<%= link_to "ORDER", '#', class: "btn btn-lg btn-primary" %>
-  	</p>
-  </h2>
 
+
+  
   

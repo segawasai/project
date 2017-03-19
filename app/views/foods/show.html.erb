@@ -1,3 +1,14 @@
-<h2 >
-	 <%= @food.name %>
-</h2>
+<table>
+	<tbody>
+		<tr>
+			<td>
+				<img src="/assets/<%= @food.name%>.jpg" > 
+			</td>
+			<td>
+				<p class="info"> Name: <%= @food.name%></p>
+				<p class="info"> Price: 15000Vnd</p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
