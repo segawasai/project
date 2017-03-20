@@ -2,11 +2,11 @@
 	<tbody>
 		<tr>
 			<td>
-				<img src="/assets/<%= @food.name%>.jpg" > 
+				<%=foodimage( "#{@food.url}", "large" ) %>
 			</td>
 			<td>
 				<p class="info"> Name: <%= @food.name%></p>
-				<p class="info"> Price: 15000Vnd</p>
+				<p class="info"> Price:<%= @food.price%></p>
 			</td>
 		</tr>
 	</tbody>

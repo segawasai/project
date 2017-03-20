@@ -1,4 +1,4 @@
-<div class="center jumbotron">
+<div class="center jumbotron" style="margin-top: 50px">
   <h1>Welcome to the Food and Drink Store</h1>
   <%if !logged_in? %>
   <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
@@ -7,38 +7,34 @@
   <h1>
   	This is our Menu
   </h1>
-  <div>
+ 
   <h2>
-  <table>
     <tbody>
-      <tr>
-        <td>
-        <a href="foods/1"><img src="/assets/banhmy.jpg" ></a>
-        </td>
-
-        <td>
-        <a href="foods/2"><img src="/assets/Coca.jpg" ></a>
-        </td>
-
-        <td>
-        <a href="foods/3"><img src="/assets/Kem.jpg" ></a>
-        </td>      
-      </tr>
-      <%if logged_in? %>
-      <tr>
-        <td>
-          <%= link_to "ORDER", '#', class: "btn btn-lg btn-primary" %>
-        </td>
-        <td>
-          <%= link_to "ORDER", '#', class: "btn btn-lg btn-primary" %>
-        </td>
-        <td>
-          <%= link_to "ORDER", '#', class: "btn btn-lg btn-primary" %>
-        </td>
-      </tr>
-      <%end%>
-    </tbody>
-  </table>
+      <div class="featured-block">
+    <div class="row">
+    <% @foods.each do |food| %>
+      <div class="col-md-3">
+        <div class="block">
+          <div class="thumbnail"><a href="foods/<%=food.id%>"><img src = "<%=food.url%>"></a>
+            <div class="caption">
+              <h1><strong><%= food.name %></strong></h1>
+              <% if logged_in? && current_user.admin?%>
+              <p style="font-size: 20px">
+              <%= link_to "Edit", '#',class: "btn btn-lg btn-primary"%>
+              <%= link_to "Deleete", '#',class: "btn btn-lg btn-primary"%>
+              </p>       
+              <%end%>
+              <%if logged_in? && !current_user.admin?%>
+              <p><%= link_to "ORDER", '#', class: "btn btn-lg btn-primary" %></p>
+               <%end%>
+              </div>
+          </div>
+        </div>
+      </div>
+      <% end %>     
+    </div>
+    </div>
+          
   </h2>
 
 
