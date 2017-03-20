@@ -20,7 +20,9 @@
             <li><%= link_to "Home", root_path %></li>
             <!-- Login as Admin -->
           <% if logged_in? && current_user.admin?%>
+
           <li><%= link_to "Users", users_path %></li>
+
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               Foods <b class="caret"></b>
@@ -31,11 +33,27 @@
               <li class="divider"></li>     
             </ul>
           </li>
+
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              Account <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "Profile", current_user %></li>
+              <li><%= link_to "Settings", edit_user_path(current_user) %></li>
+              <li class="divider"></li>
+              <li>
+                <%= link_to "Log out", logout_path, method: "delete" %>
+              </li>  
+            </ul>
+          </li>
+
           <%end%>
 
             <!-- Login as normal User -->
           <% if logged_in? && !current_user.admin? %>         
           <li><%= link_to "All Food", foods_path %></li>
+
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               Account <b class="caret"></b>
@@ -49,9 +67,11 @@
               </li>
             </ul>
           </li>
+          
+          <% end %>
 
           <!-- Not logged in -->
-        <% else %>
+        <% if !logged_in? %>
           <li><%= link_to "Log in", login_path %></li>
         <% end %>
           </ul>
