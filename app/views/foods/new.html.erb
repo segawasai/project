@@ -1,0 +1,19 @@
+<% provide(:title, 'And Food') %>
+<h1>Add Food</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@food) do |f| %>
+      <%= f.label :name%>
+      <%= f.text_field :name %>
+
+      <%= f.label :price%>
+      <%= f.text_field :price%>
+
+      <%= f.label :url %>
+      <%= f.text_field :url%>
+
+      <%= f.submit "Create Food", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

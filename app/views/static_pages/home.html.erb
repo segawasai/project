@@ -20,8 +20,9 @@
               <h1><strong><%= food.name %></strong></h1>
               <% if logged_in? && current_user.admin?%>
               <p style="font-size: 20px">
-              <%= link_to "Edit", '#',class: "btn btn-lg btn-primary"%>
-              <%= link_to "Deleete", '#',class: "btn btn-lg btn-primary"%>
+              <%= link_to "EDIT" ,edit_food_path(food),class: "btn btn-lg btn-primary"%>
+              <%= link_to "DELETE", food, method: :delete,
+                                  data: { confirm: "You sure?" },class: "btn btn-lg btn-primary"%>
               </p>       
               <%end%>
               <%if logged_in? && !current_user.admin?%>
