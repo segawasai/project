@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  
   #get 'foods/show'
 
   get 'sessions/new'
@@ -12,7 +11,10 @@ Rails.application.routes.draw do
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
-  resources :foods
+
+  resources :foods do
+    resources :reviews, except: [:show, :index]
+  end
   resources :users
 
   root 'static_pages#home'

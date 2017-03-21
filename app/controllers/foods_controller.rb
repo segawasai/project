@@ -1,11 +1,18 @@
 class FoodsController < ApplicationController
-
+  before_action
   def new
     @food = Food.new
   end
 
   def show
-  	@food = Food.find(params[:id])
+    @food = Food.find(params[:id])
+    @reviews = Review.where(food_id: @food.id).order("created_at DESC")
+
+    if @reviews.blank?
+      @avg_review = 0
+    else
+      @avg_review = @reviews.average(:rating).round(2)
+    end
   end
 
   def index

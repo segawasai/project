@@ -1,0 +1,22 @@
+<%= form_for([@food, @review]) do |f| %>
+
+  <div class="field">
+    <div id="star-rating"></div>
+  </div>
+
+  <div class="field">
+    <%= f.label :comment %>
+    <%= f.text_area :comment %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<script>
+ $('#star-rating').raty({
+            path: '/assets/',
+            scoreName: 'review[rating]' 
+        });
+ </script>
